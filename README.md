@@ -5,3 +5,7 @@ Sandbox for Symfony 4 project
 Run server : php bin/console server:run
 
 Debug routes : php bin/console debug:router
+
+Make something : php bin/console make
+
+Make controller : php bin/console make:controller BlogController
