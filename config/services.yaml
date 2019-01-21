@@ -26,3 +26,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    #Configure the logger service for LuckyController
+    App\Controller\LuckyController:
+        public: true
+        bind:
+            $logger: '@monolog.logger.doctrine'
+            $projectDir: '%kernel.project_dir%'
