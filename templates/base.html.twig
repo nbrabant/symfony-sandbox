@@ -10,8 +10,8 @@
             {% block sidebar %}
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/lucky/number">Lucky number</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="{{ path('app_lucky_number') }}">Lucky number</a></li>
+                    <li><a href="{{ path('blog_list') }}">Blog</a></li>
                 </ul>
             {% endblock %}
         </div>
