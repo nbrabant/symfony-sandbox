@@ -10,12 +10,28 @@ class BlogController extends AbstractController
     /**
      * Matches /blog exactily
      *
-     * @Route("/blog", name="blog_list")
+     * @Route(
+     *      "/blog/{page}",
+     *      name="blog_list",
+     *      requirements={
+     *          "page"="\d+",
+     *          "_format": "html|rss"
+     *      }
+     * )
      */
-    public function list()
+    public function list($page = 1)
     {
         return $this->render('blog/list.html.twig', [
             'controller_name' => 'BlogController',
+            'page' => $page,
+            'prev' => $this->generateUrl(
+                'blog_list',
+                ['page' => ($page <= 1 ? 1 : $page - 1)]
+            ),
+            'next' => $this->generateUrl(
+                'blog_list',
+                ['page' => $page + 1]
+            )
         ]);
     }
 
