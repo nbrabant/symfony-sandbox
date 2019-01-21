@@ -34,7 +34,17 @@ class BlogController extends AbstractController
             'next' => $this->generateUrl(
                 'blog_list',
                 ['page' => $page + 1]
-            )
+            ),
+            'blog_entries' => [
+                [
+                    'title' => 'My first article',
+                    'body' => 'Body of my first article',
+                ],
+                [
+                    'title' => 'My second article',
+                    'body' => 'Body of my second article',
+                ]
+            ]
         ]);
     }
 
