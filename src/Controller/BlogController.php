@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
 {
@@ -19,8 +20,10 @@ class BlogController extends AbstractController
      *      }
      * )
      */
-    public function list($page = 1)
+    public function list(Request $request, $page = 1)
     {
+        $page = $request->query->get('page', 1);
+
         return $this->render('blog/list.html.twig', [
             'controller_name' => 'BlogController',
             'page' => $page,
@@ -40,7 +43,7 @@ class BlogController extends AbstractController
      *
      * @Route("/blog/{slug}", name="blog_show")
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         // code...
     }

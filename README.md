@@ -9,3 +9,5 @@ Debug routes : php bin/console debug:router
 Make something : php bin/console make
 
 Make controller : php bin/console make:controller BlogController
+
+Make some CRUD : php bin/console make:crud Blog
