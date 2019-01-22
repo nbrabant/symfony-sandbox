@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My blog posts{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
 
 {% block body %}
+    <a href="{{ path('blog_new') }}">New blog</a>
+
     {% for article in blog_entries %}
         {{ include('blog/article_details.html.twig', { 'article': article }) }}
     {% else %}
