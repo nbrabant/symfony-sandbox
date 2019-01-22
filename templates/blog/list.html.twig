@@ -2,6 +2,10 @@
 
 {% block title %}My blog posts{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     {% for article in blog_entries %}
         {{ include('blog/article_details.html.twig', { 'article': article }) }}

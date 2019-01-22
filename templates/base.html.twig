@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link href="{{ asset('css/base.css') }}" rel="stylesheet" />
+        {% block stylesheets %}
+            <link href="{{ asset('css/base.css') }}" rel="stylesheet" />
+        {% endblock %}
     </head>
     <body>
         <div id="sidebar">
