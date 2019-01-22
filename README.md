@@ -12,7 +12,7 @@ Make controller : php bin/console make:controller BlogController
 
 Make some CRUD : php bin/console make:crud Blog
 
-###Database entity creation process :
-Make entity and repository : php bin/console make:entity Blog
-Make a new migration : php bin/console make:migration
-Run migrations : php bin/console doctrine:migrations:migrate
+Database entity creation process :
+* Make entity and repository : php bin/console make:entity Blog
+* Make a new migration : php bin/console make:migration
+* Run migrations : php bin/console doctrine:migrations:migrate
