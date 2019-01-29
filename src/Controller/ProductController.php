@@ -60,4 +60,42 @@ class ProductController extends AbstractController
 
         return new Response('Check out this great product : ' . $product->getName());
     }
+
+    /**
+     * @Route("/product/edit/{id}", name="product_edit")
+     */
+    public function edit($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException('No product for id ' . $id);
+        }
+
+        $product->setName('New product name');
+        $entityManager->flush();
+
+        return $this->redirectToRoute('product_show', [
+            'id' => $product->getId(),
+        ]);
+    }
+
+    /**
+     * @Route("/product/delete/{id}", name="product_delete")
+     */
+    public function delete($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException('No product for id ' . $id);
+        }
+
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('product');
+    }
 }
