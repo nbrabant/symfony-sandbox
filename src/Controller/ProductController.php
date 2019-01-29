@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Product;
+use App\Entity\Category;
 
 class ProductController extends AbstractController
 {
@@ -31,18 +32,24 @@ class ProductController extends AbstractController
      */
     public function new(Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $category = new Category();
+        $category->setName('Junk food');
 
         $product = new Product();
-        $product->setName('Keyboard');
-        $product->setPrice(1999);
-        $product->setDescription('Ergonomic keyboard with unicorn layout');
+        $product->setName('Knackkis');
+        $product->setPrice(2);
+        $product->setDescription('Industrial saussages');
 
+        $product->setCategory($category);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($category);
         $entityManager->persist($product);
-
         $entityManager->flush();
 
-        return new Response('Saved new product with id ' . $product->getId());
+        return new Response(
+            'Saved new product with id ' . $product->getId() . '
+             and new category with id ' . $category->getId());
     }
 
     /**

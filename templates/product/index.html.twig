@@ -7,6 +7,7 @@
 
     {% for product in product_entries %}
         <h2><a href="{{ path('product_show', {'id': product.id}) }}">{{ product.name }}</a></h2>
+        <i>{{ product.category.name }}</i>
         <p>{{ product.description }}</p>
         <a href="{{ path('product_edit', {'id': product.id}) }}">Edit product</a>
         <a href="{{ path('product_delete', {'id': product.id}) }}">Delete product</a>
