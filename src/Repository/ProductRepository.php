@@ -19,22 +19,20 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param  $price
+     * @return Product[]
+     */
+    public function findAllGreaterThanPrice($price): array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.price > :price')
+            ->setParameter('price', $price)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+
+        return $qb->execute();
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Product
